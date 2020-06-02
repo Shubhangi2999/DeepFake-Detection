@@ -1,0 +1,105 @@
+{% load static %}
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+<meta  charset="UTF-8" >
+<title>Prediction Result</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/admin/css/base.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static '/admin/css/dashboard.css' %}" />
+
+    <style>
+  a:link, a:visited {
+    background-color: black;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+                     }
+
+
+a:hover, a:active {
+
+    color:white
+}
+#demo{
+padding-top: 5px;
+    padding-right: 15px;
+    padding-bottom: 30px;
+    padding-left: 15px;
+    display : inline;
+    float : left;
+     border: 1px solid #ccc;
+
+}
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+
+#frame {
+
+margin : 10px 5px 15px 100px;
+}
+    </style>
+
+  <script src='//vizor.io/static/scripts/vizor-360-embed.js' data-vizorurl='//vizor.io/embed/sonnunelu/beach'></script>
+
+    <script>
+
+   window.reload();
+
+
+  </script>
+</head>
+<body>
+
+<!-- Header -->
+    <div id="header"style="background-color:#e91640;">
+        <div id="branding">
+
+            <h1 id="site-name" ><strong style="color:#000000;">Prediction Result</strong></h1>
+
+        </div>
+
+
+        <span id="user-tools" style="color:Black;">
+
+            <strong>Welcome,</strong>
+            <a href="/admin/" target="_blank" style="background-color:#eed490"><strong style="color:Black;">View Admin Site</strong></a>
+            <a href="/" target="_blank" style="background-color:#eed490"><strong style="color:Black;">Home</strong></a>
+            <a href="/" target="_blank" style="background-color:#eed490"><strong style="color:Black;">About Us</strong></a>
+            <a href="/" target="_blank" style="background-color:#eed490"><strong style="color:Black;">Contacts</strong></a>
+        </span>
+    </div>
+    <!-- END Header -->
+
+
+<br><br>
+<!--<iframe src="https://vizor.io/sonnunelu/beach" frameborder="0" width=1000 height=1000 allowfullscreen data-token="kkxqMZ" id="frame"></iframe>-->
+
+<h1><strong>The result of prediction is: {{ count }}</strong> </h1>
+
+{% for video in videofile  reversed %}
+
+<div id="demo">
+<div class="desc"><strong>{{ forloop.counter }})&nbsp &nbsp{{ video.name }}</strong></div>
+    <video width='400' controls>
+<source src='{{ MEDIA_URL }}{{ video.videofile }}' type='video/mp4'>
+Your browser does not support the video tag.
+</video>
+</div>
+
+
+
+
+{% endfor %}
+
+
+
+<br><br>
+
+
+
+
+</body>
+</html>
